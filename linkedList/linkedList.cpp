@@ -31,6 +31,18 @@ class List {
       }
     }
 
+    // Push Back
+    void pushBack(int val) {
+      Node* newNode = new Node(val);
+      if (head == NULL) {
+        head = tail = newNode;
+      } else {
+        tail->next = newNode;
+        tail = newNode;
+      }
+    }
+
+
     // Show list
     void print() {
       Node* temp = head;
@@ -49,6 +61,9 @@ int main() {
   l.pushFront(3);
   l.pushFront(4);
   l.pushFront(5);
+  l.pushFront(6);
+  l.pushBack(0);
+  l.pushBack(29);
 
   l.print();
   return 0;
