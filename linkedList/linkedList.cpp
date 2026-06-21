@@ -42,6 +42,32 @@ class List {
       }
     }
 
+    // Pop Front
+    void popFront() {
+      if (head == NULL) {
+        delete head;
+      } else {
+        Node* temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
+      }
+    }
+
+    // Pop Back
+    void popBack() {
+      if (head == NULL) {
+        cout<<"Linked List is empty!";
+      } else {
+        Node* temp = head;
+        while (temp->next != tail) {
+          temp = temp->next;
+        }
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+      }
+    }
 
     // Show list
     void print() {
@@ -64,7 +90,8 @@ int main() {
   l.pushFront(6);
   l.pushBack(0);
   l.pushBack(29);
-
+  l.popFront();
+  l.popBack();
   l.print();
   return 0;
 }
