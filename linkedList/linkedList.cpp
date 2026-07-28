@@ -35,7 +35,7 @@ class List {
     void pushBack(int val) {
       Node* newNode = new Node(val);
       if (head == NULL) {
-        head = tail = newNode;
+        head = newNode;
       } else {
         tail->next = newNode;
         tail = newNode;
@@ -90,8 +90,7 @@ int main() {
   l.pushFront(6);
   l.pushBack(0);
   l.pushBack(29);
-  l.popFront();
-  l.popBack();
+  l.pushBack(88);
   l.print();
   return 0;
 }
