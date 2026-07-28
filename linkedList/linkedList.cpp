@@ -45,7 +45,8 @@ class List {
     // Pop Front
     void popFront() {
       if (head == NULL) {
-        delete head;
+        cout<<"Underflow!"<<endl;
+        return;
       } else {
         Node* temp = head;
         head = head->next;
@@ -86,11 +87,10 @@ int main() {
   l.pushFront(2);
   l.pushFront(3);
   l.pushFront(4);
-  l.pushFront(5);
-  l.pushFront(6);
   l.pushBack(0);
   l.pushBack(29);
   l.pushBack(88);
+  l.popFront();
   l.print();
   return 0;
 }
