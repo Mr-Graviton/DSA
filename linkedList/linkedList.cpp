@@ -42,6 +42,31 @@ class List {
       }
     }
 
+    // Insert
+    void insert(int val, int pos) {
+      if (pos<1) {
+        cout<<"Invalid position!"<<endl;
+        return;
+      } else if (pos==1) {
+        pushFront(val);
+        return;
+      } else if (pos>1) {
+        Node* newNode = new Node(val);
+        Node* ptr = head;
+        int curr_pos = 0;
+        while(ptr != NULL) {
+          if (curr_pos == pos) break;
+          curr_pos++;
+          ptr = ptr->next;
+        }
+        newNode->next = ptr->next;
+        ptr->next = newNode;
+      } else {
+        cout<<"Something went wrong!"<<endl;
+        return;
+      }
+    }
+
     // Pop Front
     void popFront() {
       if (head == NULL) {
@@ -58,7 +83,8 @@ class List {
     // Pop Back
     void popBack() {
       if (head == NULL) {
-        cout<<"Linked List is empty!";
+        cout<<"Underflow!";
+        return;
       } else {
         Node* temp = head;
         while (temp->next != tail) {
@@ -90,7 +116,13 @@ int main() {
   l.pushBack(0);
   l.pushBack(29);
   l.pushBack(88);
+  l.insert(1729, 4);
+  l.insert(94, 3);
   l.popFront();
+  l.popBack();
+  l.popBack();
+  l.insert(55, 1);
+  l.insert(99, 100);
   l.print();
   return 0;
 }
