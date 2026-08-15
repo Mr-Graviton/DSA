@@ -67,7 +67,7 @@ class List {
       } else if (pos>1 & pos<count) {
         Node* newNode = new Node(val);
         Node* ptr = head;
-        int curr_pos = 0;
+        int curr_pos = 1;
         while(ptr != NULL) {
           if (curr_pos == pos) break;
           curr_pos++;
