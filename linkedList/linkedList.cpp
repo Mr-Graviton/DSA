@@ -14,6 +14,15 @@ class Node {
 class List {
   Node* head;
   Node* tail;
+  inline static int count = 0;
+
+  static void rise() {
+    count++;
+  }
+
+  static void fall() {
+    count--;
+  }
 
   public: 
     List() {
@@ -29,6 +38,7 @@ class List {
         newNode->next = head;
         head = newNode;
       }
+      rise();
     }
 
     // Push Back
@@ -40,6 +50,7 @@ class List {
         tail->next = newNode;
         tail = newNode;
       }
+      rise();
     }
 
     // Insert
@@ -50,7 +61,10 @@ class List {
       } else if (pos==1) {
         pushFront(val);
         return;
-      } else if (pos>1) {
+      } else if (count==pos){
+        pushBack(val);
+        return;
+      } else if (pos>1 & pos<count) {
         Node* newNode = new Node(val);
         Node* ptr = head;
         int curr_pos = 0;
@@ -61,8 +75,9 @@ class List {
         }
         newNode->next = ptr->next;
         ptr->next = newNode;
+        rise();
       } else {
-        cout<<"Something went wrong!"<<endl;
+        cout<<"Insert failed: Invalid position"<<endl;
         return;
       }
     }
@@ -72,12 +87,13 @@ class List {
       if (head == NULL) {
         cout<<"Underflow!"<<endl;
         return;
-      } else {
+      } else {;
         Node* temp = head;
         head = head->next;
         temp->next = NULL;
         delete temp;
       }
+      fall();
     }
 
     // Pop Back
@@ -94,6 +110,7 @@ class List {
         delete tail;
         tail = temp;
       }
+      fall();
     }
 
     // Show list
@@ -104,6 +121,7 @@ class List {
         temp = temp->next;
       }
       cout<<"NULL"<<endl;
+      cout<<"Node count = "<<count<<endl;
     }
 };
 
@@ -123,6 +141,8 @@ int main() {
   l.popBack();
   l.insert(55, 1);
   l.insert(99, 100);
+  l.insert(99, 7);
+  l.insert(99, 8);
   l.print();
   return 0;
 }
