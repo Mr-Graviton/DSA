@@ -42,6 +42,9 @@ class List {
     // Reverse the linked list
     void reverse();
 
+    // Middle of linked list
+    void middle();
+
     // Show list
     void print();
 };
