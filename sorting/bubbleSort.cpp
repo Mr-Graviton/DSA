@@ -20,7 +20,7 @@ vector<int> bubbleSort(vector<int> arr) {
 }
 
 int main() {
-  vector<int> arr = {4, 1, 5, 2, 3};
+  vector<int> arr = {8, 2, 10, 4, 6};
   vector<int> res = bubbleSort(arr);
   for(int i=0; i<res.size(); i++) {
     cout<<res[i]<<" ";
