@@ -9,7 +9,7 @@ class Stack {
   public:
     Stack(int n): stack(nullptr), max_size(n) {
       if (n<=0) {
-        cout<<"Invalid Stack Size!"<<endl;
+        throw invalid_argument("Invalid Queue Size!");
       }
       stack = new int[max_size];
     }
@@ -52,6 +52,8 @@ int main() {
   s1.pop();
   s1.pop();
   s1.peek();
+
+  Stack s2(-1); // check exception handling
 
   return 0;
 }
